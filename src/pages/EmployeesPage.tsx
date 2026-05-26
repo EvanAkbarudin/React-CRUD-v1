@@ -12,7 +12,7 @@ const EmployeesPage = () => {
 
   const { employees, employeesLoading, employeesError, loadEmployees } = useFetchEmployees();
   const { CreateEmployee, inputTextEmployeeLoading, inputTextEmployeeError } = useCreateEmployees();
-  const { deleteEmployee, deleteEmployeeLoading, deleteEmployeeError } = useDeleteEmployees();
+  const { deleteEmployee } = useDeleteEmployees();
   const { editEmployee, editEmployeeError, editEmployeeLoading } = useEditEmploye();
 
   const handleCreateEmployee = async () => {
@@ -26,18 +26,22 @@ const EmployeesPage = () => {
     loadEmployees();
   };
 
-  const handleUpdateEmployee = async () => {
-    if ((selectedEmployeeId && editInputText) || editJobInputText) {
-      await editEmployee(selectedEmployeeId, {
-        name: editInputText,
-        position: editJobInputText,
-      });
-      await loadEmployees();
-      setEditInputText("");
-      setSelectedEmployeeId("");
-      setEditJobInputText("");
-    }
-  };
+const handleUpdateEmployee = async () => {
+  if (!selectedEmployeeId) return;
+
+  if (!editInputText || !editJobInputText) return;
+
+  await editEmployee(selectedEmployeeId, {
+    name: editInputText,
+    position: editJobInputText,
+  });
+
+  await loadEmployees();
+
+  setEditInputText("");
+  setSelectedEmployeeId("");
+  setEditJobInputText("");
+};
 
   return (
     <div className="bg-gray-900 min-h-screen px-6 py-12">
@@ -72,7 +76,7 @@ const EmployeesPage = () => {
                   <td className="px-6 py-4 text-gray-400">{employee.position}</td>
                   <td className="px-6 py-4 text-gray-400">{employee.email}</td>
                   <td className="px-6 py-4">
-                    <button onClick={() => handleDeleteEmployee(employee.id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 transition-colors cursor-pointer">
+                    <button onClick={() => handleDeleteEmployee(String(employee.id))} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 transition-colors cursor-pointer">
                       Delete
                     </button>
                   </td>
@@ -80,11 +84,11 @@ const EmployeesPage = () => {
                     <input
                       type="radio"
                       name="selectedEmployee"
-                      checked={selectedEmployeeId === employee.id}
+                      checked={selectedEmployeeId === String(employee.id)}
                       onChange={() => {
-                        setSelectedEmployeeId(employee.id);
-                        setEditInputText(employee.name);
-                        setEditJobInputText(employee.position);
+                        setSelectedEmployeeId(String(employee.id));
+                        setEditInputText(employee.name || "");
+                        setEditJobInputText(employee.position || "");
                       }}
                     />
                   </td>
