@@ -1,0 +1,89 @@
+{
+  "employees": [
+    {
+      "id": "4",
+      "name": "Sontoloyo",
+      "position": "Mabok"
+    },
+    {
+      "id": "5",
+      "name": "Evan",
+      "position": "Fullstack Developer"
+    },
+    {
+      "id": "6",
+      "name": "Evan Ganteng",
+      "position": "QA Engineer"
+    },
+    {
+      "id": "8",
+      "name": "Sarah Lee",
+      "position": "HR Manager"
+    },
+    {
+      "id": "9",
+      "name": "David Anderson",
+      "position": "Marketing Specialist"
+    },
+    {
+      "name": "Jingga",
+      "id": "L68P6H8_W7A",
+      "position": "Pengangguran"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Product A",
+      "price": 10.99
+    },
+    {
+      "id": "2",
+      "name": "Product B",
+      "price": 19.99
+    },
+    {
+      "id": "3",
+      "name": "Product C",
+      "price": 5.99
+    },
+    {
+      "id": "4",
+      "name": "Product D",
+      "price": 15.49
+    },
+    {
+      "id": "5",
+      "name": "Product E",
+      "price": 8.75
+    }
+  ],
+  "todos": [
+    {
+      "id": "1",
+      "task": "Buy groceries",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "task": "Clean the house",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "task": "Finish project report",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "task": "Call mom",
+      "completed": true
+    },
+    {
+      "id": "5",
+      "task": "Go for a run",
+      "completed": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
